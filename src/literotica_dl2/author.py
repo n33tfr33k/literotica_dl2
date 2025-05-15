@@ -45,7 +45,7 @@ class Author:
         # get all the "series"
         self._series = []
         self._individual_works = []
-        for work in self.stories_page.find_all("div", "_works_item__series_expanded_header_card_14spp_15"):
+        for work in self.stories_page.find_all("div", "_works_item_zx1nh_5 _works_item__series_expanded_header_card_zx1nh_23"):
             try:
                 log.info("Series Title %s", work.getText()[:100])
                 self._series.append(parse_story_series(work.find("a")["href"]))

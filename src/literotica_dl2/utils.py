@@ -29,6 +29,8 @@ def get_url_from_literotica(url: str) -> bytes:
         log.warning("Returned URL is different but same Story")
         return page.content
     log.warning("Returned page does not match from literotica skipping")
+    log.warning(f"Got page url:{page.url}")
+    log.warning(f"Expected url:{url}")
     return ""
 
 
