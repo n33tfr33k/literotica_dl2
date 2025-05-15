@@ -40,7 +40,7 @@ class Author:
         if self.stories_page is not None:
             return
         self.stories_page = BeautifulSoup(get_url_from_literotica(self.stories_url), "html5lib")
-        self._authorname = self.stories_page.find("p", class_="_header_title_1jjo0_57").getText()
+        self._authorname = self.stories_page.find("p", class_="_header_title_dcvym_56").getText()
 
         # get all the "series"
         self._series = []
