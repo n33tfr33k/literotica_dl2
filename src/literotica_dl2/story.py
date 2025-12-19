@@ -39,15 +39,15 @@ class Story:
         self._title = html.unescape(self._title)
         self._title, self._category = self._title[:-17].rsplit(" - ", 1)
 
-        # Author link class name is y_eU . If the CSS changes update here.
-        self._author = self.first_page.find("a", class_="y_eU").getText()
+        # Author link class name is _author__title_2mplv_48. If the CSS changes update here.
+        self._author = self.first_page.find("a", class_="_author__title_2mplv_48").getText()
 
-        # Description dive class name is bn_B.
-        self._description = self.first_page.find("div", class_="bn_B").getText()
+        # Description div class name is bn_B.
+        self._description = self.first_page.find("div", class_="_widget__info_5hbon_119").getText()
 
-        # Pages link class = l_bJ
+        # Pages link class = _pagination__item_1c9jk_13
         try:
-            self._pages = int(self.first_page.find_all("a", class_="l_bJ")[-1].getText())
+            self._pages = int(self.first_page.find_all("a", class_="_pagination__item_1c9jk_13")[-1].getText())
         except IndexError:
             self._pages = 1
         except Exception:
@@ -100,7 +100,7 @@ class Story:
             for pg_no in range(2, self._pages + 1):
                 page_url = f"{self.url}?page={pg_no}"
                 page_soups.append(BeautifulSoup(get_url_from_literotica(page_url), features="html5lib"))
-        story_soups = [x.find("div", class_="aa_ht") for x in page_soups]
+        story_soups = [x.find("div", class_="_introduction-wrap_do80i_1 _author_page_do80i_76 _introduction__text_do80i_30 _open_do80i_27") for x in page_soups]
         pages = [x.getText("\n\n") for x in story_soups]
 
         self._text = "\n".join([str(x) for x in pages])
